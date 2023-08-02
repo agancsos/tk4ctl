@@ -27,7 +27,7 @@ tk4ctl is a helper utility to manage a Hercules MVS instance as well as the gues
 Operation    | Description                                         |
 |--|--|
 |tso         | Runs a raw TSO command                              |
-|jcl	     | Runs a JCL job via sockdev                          |
+|jcl	        | Runs a JCL job via sockdev                          |
 |herc        | Runs a raw Hercules command through HTTP            |
 |kicks       | Executes a KICKS process (assumes KICKS installed)  |
 
@@ -44,14 +44,16 @@ All commands have the format tk4ctl <operation> <flags>
 |-m	         | MVS dataset member                                   |
 |-f	         | Local file to run                                    |
 |-e	         | Command arguments                                    |
-|--version	 | Prints the version of the utility                    |
+|--version	  | Prints the version of the utility                    |
 |--help	     | Prints the help menu                                 |
 Note that:
 * Local file is local to the client
 * Dataset and file are mutually exclusive, if both are provided, local file will be used
 * For tso commands, it is required to redirect the job output to httproot by changing the following lines:
+```bash
    # 000E 1403 prt/prt00e.txt ${TK4CRLF}
    000E 1403 hercules/httproot/tk4ctl_log.txt ${TK4CRLF}
+```
 
 ## Examples
 ```bash
